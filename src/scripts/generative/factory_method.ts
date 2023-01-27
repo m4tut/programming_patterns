@@ -150,3 +150,5 @@ const TFInsuranceFactory = insuranceFactory.creteInsurance('tf');
 const ABInsuranceFactory = insuranceFactory.creteInsurance('ab');
 console.log('factory_method:', TFInsuranceFactory);
 console.log('factory_method:', ABInsuranceFactory);
+
+console.log('====================================');
