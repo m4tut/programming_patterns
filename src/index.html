@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="./styles/normalize.css" />
     <link rel="stylesheet" href="./styles/index.css" />
     <script>let exports = {};</script>
-    <script src='../dist/factory_method.js'></script>
-    <script src='../dist/abstract_factory.js'></script>
-    <script src='../dist/builder.js'></script>
-    <script src='../dist/prototype.js'></script>
-    <script src='../dist/singleton.js'></script>
+
+    <script src='../dist/generative/factory_method.js'></script>
+    <script src='../dist/generative/abstract_factory.js'></script>
+    <script src='../dist/generative/builder.js'></script>
+    <script src='../dist/generative/prototype.js'></script>
+    <script src='../dist/generative/singleton.js'></script>
+
     <script src='../dist/structural/adapter.js'></script>
     <script src='../dist/structural/bridge.js'></script>
     <script src='../dist/structural/composite.js'></script>
+    <script src='../dist/structural/decorator.js'></script>
     <title>Паттерны программирования</title>
   </head>
   <body>
@@ -22,6 +25,9 @@
       <h1>Паттерны программирования:</h1>
       <section>
         <h2>Порождающие паттерны (generative):</h2>
+        <p>
+          Порождающие паттерны — шаблоны проектирования, которые позволяют сделать систему независимой от способа создания, композиции и представления объектов.
+        </p>
         <ul>
           <li>
             <p>
@@ -55,6 +61,9 @@
 
       <section>
         <h2>Структурные паттерны (structural):</h2>
+        <p>
+          Структурные паттерны — шаблоны проектирования, в которых рассматривается вопрос о том, как из классов и объектов образуются более крупные структуры.
+        </p>
         <ul>
           <li>
             <p>
@@ -70,7 +79,7 @@
           </li>
           <li>
             <p>
-              <strong>...</strong> (...) — ...
+              <strong>Декоратор</strong> (decorator) — это структурный паттерн проектирования, который позволяет динамически добавлять объектам новую функциональность, оборачивая их в полезные «обёртки».
           </li>
           <li>
             <p>
