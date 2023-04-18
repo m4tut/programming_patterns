@@ -75,6 +75,7 @@
     pay: (orderPrice: number) => void;
     canPay: (amount: number) => boolean;
     setNext: (account: Account) => Account;
+    show: () => void;
   }
 
   abstract class Account implements IAccount {
@@ -101,6 +102,10 @@
       this.incomer = account;
 
       return account;
+    }
+
+    show() {
+      console.log('chain_of_responsibility: ', this);
     }
   }
 
@@ -135,4 +140,5 @@
   paypal.setNext(qiwi).setNext(master);
 
   paypal.pay(2000);
+  paypal.show();
 }
