@@ -4,7 +4,7 @@
 
     private constructor() {}
 
-    public static getInstance(): Singleton {
+    static getInstance(): Singleton {
       if (!Singleton.instance) {
         Singleton.instance = new Singleton();
       }
@@ -12,7 +12,7 @@
       return Singleton.instance;
     }
 
-    public someBusinessLogic() {}
+    someBusinessLogic() {}
   }
 
   const s1 = Singleton.getInstance();
@@ -34,7 +34,7 @@
       this.count = count;
     }
 
-    public static getInstance(count: number): CountSingleton {
+    static getInstance(count: number): CountSingleton {
       if (!CountSingleton.instance) {
         CountSingleton.instance = new CountSingleton(count);
       }
@@ -42,7 +42,7 @@
       return CountSingleton.instance;
     }
 
-    public getCount() {
+    getCount() {
       return CountSingleton.instance.count;
     }
   }

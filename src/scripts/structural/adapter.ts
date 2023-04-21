@@ -1,12 +1,12 @@
 {
   class Target {
-    public request(): string {
+    request(): string {
       return 'target';
     }
   }
 
   class Adapted {
-    public specificRequest(): string {
+    specificRequest(): string {
       return 'cificeps';
     }
   }
@@ -19,7 +19,7 @@
       this.adapted = adapted;
     }
 
-    public request(): string {
+    request(): string {
       const result = this.adapted.specificRequest().split('').reverse().join('');
       return `(TRANSLATED) ${result}`;
     }

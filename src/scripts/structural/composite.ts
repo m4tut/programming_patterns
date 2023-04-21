@@ -11,27 +11,27 @@
   abstract class Component implements IComponent {
     protected parent!: Component | null;
 
-    public setParent(parent: Component | null) {
+    setParent(parent: Component | null) {
       this.parent = parent;
     }
 
-    public getParent(): Component | null {
+    getParent(): Component | null {
       return this.parent;
     }
 
-    public add(component: Component): void {}
+    add(component: Component): void {}
 
-    public remove(component: Component): void {}
+    remove(component: Component): void {}
 
-    public isComposite(): boolean {
+    isComposite(): boolean {
       return false;
     }
 
-    public abstract operation(): string;
+    abstract operation(): string;
   }
 
   class Leaf extends Component {
-    public operation(): string {
+    operation(): string {
       return 'Leaf';
     }
   }
@@ -39,23 +39,23 @@
   class Composite extends Component {
     protected children: Component[] = [];
 
-    public add(component: Component): void {
+    add(component: Component): void {
       this.children.push(component);
       component.setParent(this);
     }
 
-    public remove(component: Component): void {
+    remove(component: Component): void {
       const componentIndex = this.children.indexOf(component);
       this.children.splice(componentIndex, 1);
 
       component.setParent(null);
     }
 
-    public isComposite(): boolean {
+    isComposite(): boolean {
       return true;
     }
 
-    public operation(): string {
+    operation(): string {
       const results = [];
       for (const child of this.children) {
         results.push(child.operation());

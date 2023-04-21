@@ -6,7 +6,7 @@
       this.sharedState = sharedState;
     }
 
-    public operation(uniqueState: any): void {
+    operation(uniqueState: any): void {
       const s = JSON.stringify(this.sharedState);
       const u = JSON.stringify(uniqueState);
       console.log(`flyweight: Displaying shared (${s}) and unique (${u}) state.`);
@@ -26,7 +26,7 @@
       return state.join('_');
     }
 
-    public getFlyweight(sharedState: string[]): Flyweight {
+    getFlyweight(sharedState: string[]): Flyweight {
       const key = this.getKey(sharedState);
 
       if (!(key in this.flyweights)) {

@@ -34,25 +34,25 @@
       }
     }
 
-    public rewind() {
+    rewind() {
       this.position = this.reverse ? this.collection.getCount() - 1 : 0;
     }
 
-    public current(): string {
+    current(): string {
       return this.collection.getItems()[this.position];
     }
 
-    public key(): number {
+    key(): number {
       return this.position;
     }
 
-    public next(): string {
+    next(): string {
       const item = this.collection.getItems()[this.position];
       this.position += this.reverse ? -1 : 1;
       return item;
     }
 
-    public valid(): boolean {
+    valid(): boolean {
       if (this.reverse) {
         return this.position >= 0;
       }
@@ -64,23 +64,23 @@
   class WordsCollection implements Aggregator {
     private items: string[] = [];
 
-    public getItems(): string[] {
+    getItems(): string[] {
       return this.items;
     }
 
-    public getCount(): number {
+    getCount(): number {
       return this.items.length;
     }
 
-    public addItem(item: string): void {
+    addItem(item: string): void {
       this.items.push(item);
     }
 
-    public getIterator(): Iterator<string> {
+    getIterator(): Iterator<string> {
       return new AlphabeticalOrderIterator(this);
     }
 
-    public getReverseIterator(): Iterator<string> {
+    getReverseIterator(): Iterator<string> {
       return new AlphabeticalOrderIterator(this, true);
     }
   }

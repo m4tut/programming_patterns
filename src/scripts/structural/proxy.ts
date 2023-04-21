@@ -4,7 +4,7 @@
   }
 
   class RealSubject implements Subject {
-    public request(): void {
+    request(): void {
       console.log('proxy: RealSubject - Handling request.');
     }
   }
@@ -16,7 +16,7 @@
       this.realSubject = realSubject || new RealSubject();
     }
 
-    public request(): void {
+    request(): void {
       this.realSubject.request();
       this.logAccess();
     }

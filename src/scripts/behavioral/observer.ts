@@ -6,10 +6,10 @@
   }
 
   class ConcreteSubject implements Subject {
-    public state: number | undefined;
+    state: number | undefined;
     private observers: Observer[] = [];
 
-    public attach(observer: Observer): void {
+    attach(observer: Observer): void {
       if (this.observers.includes(observer)) {
         return;
       }
@@ -17,7 +17,7 @@
       this.observers.push(observer);
     }
 
-    public detach(observer: Observer): void {
+    detach(observer: Observer): void {
       const observerIndex = this.observers.indexOf(observer);
       if (observerIndex === -1) {
         return;
@@ -26,13 +26,13 @@
       this.observers.splice(observerIndex, 1);
     }
 
-    public notify(): void {
+    notify(): void {
       for (const observer of this.observers) {
         observer.update(this);
       }
     }
 
-    public someBusinessLogic(): void {
+    someBusinessLogic(): void {
       this.state = Math.floor(Math.random() * (10 + 1));
       console.log(`observer: My state has just changed to - ${this.state}`);
       this.notify();
@@ -44,7 +44,7 @@
   }
 
   class ConcreteObserverA implements Observer {
-    public update(subject: Subject): void {
+    update(subject: Subject): void {
       if (subject instanceof ConcreteSubject && subject.state && subject.state < 6) {
         console.log('observer: ConcreteObserverA - Reacted to the event.');
       }
@@ -52,7 +52,7 @@
   }
 
   class ConcreteObserverB implements Observer {
-    public update(subject: Subject): void {
+    update(subject: Subject): void {
       if (subject instanceof ConcreteSubject && subject.state && subject.state >= 6) {
         console.log('observer: ConcreteObserverB - Reacted to the event.');
       }
@@ -102,7 +102,7 @@
     }
 
     getNews() {
-      return this.news
+      return this.news;
     }
   }
 

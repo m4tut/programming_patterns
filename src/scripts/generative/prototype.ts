@@ -1,10 +1,10 @@
 {
   class Prototype {
-    public primitive: any;
-    public component!: object;
-    public circularReference!: ComponentWithBackReference;
+    primitive: any;
+    component!: object;
+    circularReference!: ComponentWithBackReference;
 
-    public clone(): this {
+    clone(): this {
       const clone = Object.create(this);
 
       clone.component = Object.create(this.component);
@@ -19,7 +19,7 @@
   }
 
   class ComponentWithBackReference {
-    public prototype;
+    prototype;
 
     constructor(prototype: Prototype) {
       this.prototype = prototype;

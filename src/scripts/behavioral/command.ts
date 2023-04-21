@@ -10,7 +10,7 @@
       this.payload = payload;
     }
 
-    public execute(): void {
+    execute(): void {
       console.log(`command: SimpleCommand(${this.payload})`);
     }
   }
@@ -27,7 +27,7 @@
       this.b = b;
     }
 
-    public execute(): void {
+    execute(): void {
       console.log('command: ComplexCommand');
       this.receiver.doSomething(this.a);
       this.receiver.doSomethingElse(this.b);
@@ -35,11 +35,11 @@
   }
 
   class Receiver {
-    public doSomething(a: string): void {
+    doSomething(a: string): void {
       console.log(`command: receiver - working on (${a}.)`);
     }
 
-    public doSomethingElse(b: string): void {
+    doSomethingElse(b: string): void {
       console.log(`command: receiver - also working on (${b}.)`);
     }
   }
@@ -48,15 +48,15 @@
     private onStart: Command | undefined;
     private onFinish: Command | undefined;
 
-    public setOnStart(command: Command): void {
+    setOnStart(command: Command): void {
       this.onStart = command;
     }
 
-    public setOnFinish(command: Command): void {
+    setOnFinish(command: Command): void {
       this.onFinish = command;
     }
 
-    public doSomethingImportant(): void {
+    doSomethingImportant(): void {
       if (this.isCommand(this.onStart)) {
         this.onStart.execute();
       }
@@ -127,7 +127,7 @@
   const engine = new Engine();
   const onStartCommand = new OnStartCommand(engine);
   const onSwitchOffCommand = new OnSwitchOffCommand(engine);
-  const driver = new Driver(onStartCommand)
+  const driver = new Driver(onStartCommand);
   driver.execute();
 
   console.log('====================================');

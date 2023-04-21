@@ -4,7 +4,7 @@
   }
 
   class ConcreteComponent implements Component {
-    public operation(): string {
+    operation(): string {
       return 'ConcreteComponent';
     }
   }
@@ -16,19 +16,19 @@
       this.component = component;
     }
 
-    public operation(): string {
+    operation(): string {
       return this.component.operation();
     }
   }
 
   class ConcreteDecoratorA extends Decorator {
-    public operation(): string {
+    operation(): string {
       return `ConcreteDecoratorA(${super.operation()})`;
     }
   }
 
   class ConcreteDecoratorB extends Decorator {
-    public operation(): string {
+    operation(): string {
       return `ConcreteDecoratorB(${super.operation()})`;
     }
   }

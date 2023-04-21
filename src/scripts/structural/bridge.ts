@@ -6,14 +6,14 @@
       this.implementation = implementation;
     }
 
-    public operation(): string {
+    operation(): string {
       const result = this.implementation.operationImplementation();
       return `bridge: abstraction base operation with:\n${result}`;
     }
   }
 
   class ExtendedAbstraction extends Abstraction {
-    public operation(): string {
+    operation(): string {
       const result = this.implementation.operationImplementation();
       return `bridge: extendedAbstraction extended operation with:\n${result}`;
     }
@@ -24,13 +24,13 @@
   }
 
   class ConcreteImplementationA implements Implementation {
-    public operationImplementation(): string {
+    operationImplementation(): string {
       return "concreteImplementationA here's the result on the platform A.";
     }
   }
 
   class ConcreteImplementationB implements Implementation {
-    public operationImplementation(): string {
+    operationImplementation(): string {
       return "concreteImplementationB here's the result on the platform B.";
     }
   }

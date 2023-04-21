@@ -12,23 +12,23 @@
       this.reset();
     }
 
-    public reset(): void {
+    reset(): void {
       this.product = new Product1();
     }
 
-    public producePartA(): void {
+    producePartA(): void {
       this.product.parts.push('PartA1');
     }
 
-    public producePartB(): void {
+    producePartB(): void {
       this.product.parts.push('PartB1');
     }
 
-    public producePartC(): void {
+    producePartC(): void {
       this.product.parts.push('PartC1');
     }
 
-    public getProduct(): Product1 {
+    getProduct(): Product1 {
       const result = this.product;
       this.reset();
       return result;
@@ -36,9 +36,9 @@
   }
 
   class Product1 {
-    public parts: string[] = [];
+    parts: string[] = [];
 
-    public listParts(): void {
+    listParts(): void {
       console.log(`builder: ${this.parts.join(', ')}\n`);
     }
   }
@@ -46,15 +46,15 @@
   class Director {
     private builder!: Builder;
 
-    public setBuilder(builder: Builder): void {
+    setBuilder(builder: Builder): void {
       this.builder = builder;
     }
 
-    public buildMinimalViableProduct(): void {
+    buildMinimalViableProduct(): void {
       this.builder.producePartA();
     }
 
-    public buildFullFeaturedProduct(): void {
+    buildFullFeaturedProduct(): void {
       this.builder.producePartA();
       this.builder.producePartB();
       this.builder.producePartC();
@@ -99,7 +99,7 @@
       this.reset();
     }
 
-    public reset(): void {
+    reset(): void {
       this.car = new CarBuilder();
     }
 
@@ -123,7 +123,7 @@
       return this;
     }
 
-    public getCar(): CarBuilder {
+    getCar(): CarBuilder {
       const result = this.car;
       this.reset();
       return result;

@@ -14,9 +14,9 @@
   }
 
   abstract class Creator {
-    public abstract factoryMethod(): IProduct;
+    abstract factoryMethod(): IProduct;
 
-    public someOperation() {
+    someOperation() {
       const product = this.factoryMethod();
 
       return product.operation();
@@ -26,25 +26,25 @@
   // ===============================================================================
   // Пример 1:
   class ConcreteCreator1 extends Creator {
-    public factoryMethod(): IProduct {
+    factoryMethod(): IProduct {
       return new ConcreteProduct1();
     }
   }
 
   class ConcreteCreator2 extends Creator {
-    public factoryMethod(): IProduct {
+    factoryMethod(): IProduct {
       return new ConcreteProduct2();
     }
   }
 
   class ConcreteProduct1 implements IProduct {
-    public operation(): string {
+    operation(): string {
       return 'ConcreteProduct1';
     }
   }
 
   class ConcreteProduct2 implements IProduct {
-    public operation(): string {
+    operation(): string {
       return 'ConcreteProduct2';
     }
   }

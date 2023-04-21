@@ -48,24 +48,24 @@
   }
 
   class Component1 extends BaseComponent {
-    public doA(): string {
+    doA(): string {
       this.mediator.notify(this.mediator, 'A');
       return '(Component 1 does A)';
     }
 
-    public doB(): string {
+    doB(): string {
       this.mediator.notify(this.mediator, 'B');
       return '(Component 1 does B)';
     }
   }
 
   class Component2 extends BaseComponent {
-    public doC(): string {
+    doC(): string {
       this.mediator.notify(this.mediator, 'C');
       return '(Component 2 does C)';
     }
 
-    public doD(): string {
+    doD(): string {
       this.mediator.notify(this.mediator, 'D');
       return '(Component 2 does D)';
     }
@@ -115,7 +115,7 @@
     }
 
     makeOrder(auto: string, info: string) {
-      this.dealerMediator.orderAuto(this, auto, info)
+      this.dealerMediator.orderAuto(this, auto, info);
     }
   }
 
@@ -123,8 +123,8 @@
   const bob = new Customer('Bob', mediatorOfficialDealer);
   const misha = new Customer('Misha', mediatorOfficialDealer);
 
-  bob.makeOrder('Tesla', 'With autopilot!')
-  misha.makeOrder('Audi', 'With parktronic!')
+  bob.makeOrder('Tesla', 'With autopilot!');
+  misha.makeOrder('Audi', 'With parktronic!');
   console.log('mediator: ', mediatorOfficialDealer.getCustomersList());
 
   console.log('====================================');

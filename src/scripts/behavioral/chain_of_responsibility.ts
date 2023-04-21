@@ -8,13 +8,13 @@
   abstract class AbstractHandler implements Handler {
     private nextHandler: Handler | undefined;
 
-    public setNext(handler: Handler): Handler {
+    setNext(handler: Handler): Handler {
       this.nextHandler = handler;
 
       return handler;
     }
 
-    public handle(request: string): string | null {
+    handle(request: string): string | null {
       if (this.nextHandler) {
         return this.nextHandler.handle(request);
       }
@@ -24,7 +24,7 @@
   }
 
   class MonkeyHandler extends AbstractHandler {
-    public handle(request: string): string | null {
+    handle(request: string): string | null {
       if (request === 'Banana') {
         return `chain_of_responsibility: ${request}.`;
       }
@@ -34,7 +34,7 @@
   }
 
   class SquirrelHandler extends AbstractHandler {
-    public handle(request: string): string | null {
+    handle(request: string): string | null {
       if (request === 'Nut') {
         return `chain_of_responsibility: ${request}.`;
       }
@@ -43,7 +43,7 @@
   }
 
   class DogHandler extends AbstractHandler {
-    public handle(request: string): string | null {
+    handle(request: string): string | null {
       if (request === 'MeatBall') {
         return `chain_of_responsibility: ${request}.`;
       }

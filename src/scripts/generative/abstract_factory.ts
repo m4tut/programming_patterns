@@ -14,54 +14,54 @@
   }
 
   class ConcreteFactory1 implements AbstractFactory {
-    public createProductA(): AbstractProductA {
+    createProductA(): AbstractProductA {
       return new ConcreteProductA1();
     }
 
-    public createProductB(): AbstractProductB {
+    createProductB(): AbstractProductB {
       return new ConcreteProductB1();
     }
   }
 
   class ConcreteFactory2 implements AbstractFactory {
-    public createProductA(): AbstractProductA {
+    createProductA(): AbstractProductA {
       return new ConcreteProductA2();
     }
 
-    public createProductB(): AbstractProductB {
+    createProductB(): AbstractProductB {
       return new ConcreteProductB2();
     }
   }
 
   class ConcreteProductA1 implements AbstractProductA {
-    public usefulFunctionA(): string {
+    usefulFunctionA(): string {
       return 'abstract_factory: Product A1';
     }
   }
 
   class ConcreteProductA2 implements AbstractProductA {
-    public usefulFunctionA(): string {
+    usefulFunctionA(): string {
       return 'abstract_factory: Product A2';
     }
   }
 
   class ConcreteProductB1 implements AbstractProductB {
-    public usefulFunctionB(): string {
+    usefulFunctionB(): string {
       return 'abstract_factory: Product B1';
     }
 
-    public anotherUsefulFunctionB(collaborator: AbstractProductA): string {
+    anotherUsefulFunctionB(collaborator: AbstractProductA): string {
       const result = collaborator.usefulFunctionA();
       return `abstract_factory: B1 collaborating with the (${result})`;
     }
   }
 
   class ConcreteProductB2 implements AbstractProductB {
-    public usefulFunctionB(): string {
+    usefulFunctionB(): string {
       return 'abstract_factory: The result of the product B2.';
     }
 
-    public anotherUsefulFunctionB(collaborator: AbstractProductA): string {
+    anotherUsefulFunctionB(collaborator: AbstractProductA): string {
       const result = collaborator.usefulFunctionA();
       return `abstract_factory: B2 collaborating with the (${result})`;
     }
@@ -104,11 +104,11 @@
   }
 
   class FordFactory implements CarsFactory {
-    public createSedan() {
+    createSedan() {
       return new FordSedan();
     }
 
-    public createCoupe() {
+    createCoupe() {
       return new FordCoupe();
     }
   }
