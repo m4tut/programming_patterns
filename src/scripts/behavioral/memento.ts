@@ -119,7 +119,7 @@
   console.log('memento: undo history -', caretaker.getHistory());
 
   // Пример 1
-  class Memento {
+  class MementoExample {
     private value: string;
 
     constructor(value: string) {
@@ -132,13 +132,13 @@
   }
 
   class CaretakerExample {
-    private values: Memento[];
+    private values: MementoExample[];
 
     constructor() {
       this.values = [];
     }
 
-    addMemento(memento: Memento) {
+    addMemento(memento: MementoExample) {
       this.values.push(memento);
     }
 
@@ -148,8 +148,8 @@
   }
 
   const creator = {
-    save: (val: string) => new Memento(val),
-    restore: (memento: Memento) => memento.getValue(),
+    save: (val: string) => new MementoExample(val),
+    restore: (memento: MementoExample) => memento.getValue(),
   };
 
   const caretakerExample = new CaretakerExample();
