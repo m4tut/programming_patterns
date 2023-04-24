@@ -130,5 +130,41 @@
   const driver = new Driver(onStartCommand);
   driver.execute();
 
+  // Пример 2
+  class MathClass {
+    private num: number;
+
+    constructor(initialValue: number) {
+      this.num = initialValue;
+    }
+
+    square() {
+      return this.num ** 2;
+    }
+
+    cube() {
+      return this.num ** 3;
+    }
+  }
+
+  class MathCommand {
+    subject: MathClass;
+    commandExecuted: string[];
+
+    constructor(subject: MathClass) {
+      this.subject = subject;
+      this.commandExecuted = [];
+    }
+
+    execute(command: 'cube' | 'square') {
+      this.commandExecuted.push(command);
+      return this.subject[command]();
+    }
+  }
+
+  const x = new MathCommand(new MathClass(2));
+  console.log(`command: MathCommand - ${x.execute('cube')}`);
+  
+
   console.log('====================================');
 }
