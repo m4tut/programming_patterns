@@ -125,7 +125,7 @@
 
   bob.makeOrder('Tesla', 'With autopilot!');
   misha.makeOrder('Audi', 'With parktronic!');
-  console.log('mediator: ', mediatorOfficialDealer.getCustomersList());
+  console.log(`mediator: ${mediatorOfficialDealer.getCustomersList()}`);
 
   // Пример 2
   class User {

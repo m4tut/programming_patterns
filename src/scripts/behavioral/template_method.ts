@@ -91,7 +91,7 @@
     protected addElectronic(): void {
       console.log('template_method: TeslaBuilder - addElectronic');
     }
-    
+
     protected collectAccessories(): void {
       console.log('template_method: TeslaBuilder - collectAccessories');
     }
@@ -109,7 +109,7 @@
     protected addElectronic(): void {
       console.log('template_method: BmwBuilder - addElectronic');
     }
-    
+
     protected collectAccessories(): void {
       console.log('template_method: BmwBuilder - collectAccessories');
     }
@@ -117,9 +117,58 @@
 
   const teslaBuilder = new TeslaBuilder();
   teslaBuilder.build();
-  
+
   const bmwBuilder = new BmwBuilder();
   bmwBuilder.build();
+
+  // Пример 2
+  class Employee {
+    private name: string;
+    private salary: number;
+
+    constructor(name: string, salary: number) {
+      this.name = name;
+      this.salary = salary;
+    }
+
+    responsibilities() {}
+
+    work() {
+      return `${this.name} выполняет ${this.responsibilities()}`;
+    }
+
+    getPaid() {
+      return `${this.name} имеет ЗП ${this.salary}`;
+    }
+  }
+
+  class Developer extends Employee {
+    constructor(name: string, salary: number) {
+      super(name, salary);
+    }
+
+    responsibilities() {
+      return 'процесс создания программ';
+    }
+  }
+
+  class Tester extends Employee {
+    constructor(name: string, salary: number) {
+      super(name, salary);
+    }
+
+    responsibilities() {
+      return 'процесс тестирования';
+    }
+  }
+
+  const dev = new Developer('Влад', 100000);
+  console.log(`template_method: ${dev.getPaid()}`);
+  console.log(`template_method: ${dev.work()}`);
+
+  const tester = new Tester('Виктория', 90000);
+  console.log(`template_method: ${tester.getPaid()}`);
+  console.log(`template_method: ${tester.work()}`);
 
   console.log('====================================');
 }

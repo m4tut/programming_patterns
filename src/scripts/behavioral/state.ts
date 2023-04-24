@@ -191,22 +191,22 @@
   }
 
   const traffic = new TrafficLight();
-  console.log('state: ', traffic.sign());
+  console.log(`state: ${traffic.sign()}`);
   traffic.change();
 
-  console.log('state: ', traffic.sign());
+  console.log(`state: ${traffic.sign()}`);
   traffic.change();
 
-  console.log('state: ', traffic.sign());
+  console.log(`state: ${traffic.sign()}`);
   traffic.change();
 
-  console.log('state: ', traffic.sign());
+  console.log(`state: ${traffic.sign()}`);
   traffic.change();
 
-  console.log('state: ', traffic.sign());
+  console.log(`state: ${traffic.sign()}`);
   traffic.change();
 
-  console.log('state: ', traffic.sign());
+  console.log(`state: ${traffic.sign()}`);
 
   console.log('====================================');
 }
