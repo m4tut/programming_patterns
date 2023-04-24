@@ -128,5 +128,78 @@
 
   autoNews.setNews('New Tesla price is 40 000$');
 
+  // Пример 2
+  type Action = {
+    type: 'INCREMENT' | 'DECREMENT' | 'ADD';
+    payload?: number;
+  };
+  class Subject {
+    private observers: Observer[];
+
+    constructor() {
+      this.observers = [];
+    }
+
+    subscribe(observer: Observer) {
+      this.observers.push(observer);
+    }
+
+    unsubscribe(observer: Observer) {
+      this.observers = this.observers.filter(obs => obs !== observer);
+    }
+
+    fire(action: Action) {
+      this.observers.forEach(observer => {
+        observer.update(action);
+      });
+    }
+  }
+
+  class Observer {
+    private state: number;
+    private initialState: number;
+
+    constructor(state: number) {
+      this.state = state;
+      this.initialState = state;
+    }
+
+    update(action: Action) {
+      switch (action.type) {
+        case 'INCREMENT':
+          this.state = ++this.state;
+          break;
+        case 'DECREMENT':
+          this.state = --this.state;
+          break;
+        case 'ADD':
+          this.state += action.payload || 0;
+          break;
+        default:
+          this.state = this.initialState;
+      }
+    }
+
+    getState() {
+      return this.state;
+    }
+  }
+
+  const stream$ = new Subject();
+
+  const obs1 = new Observer(0);
+  const obs2 = new Observer(42);
+
+  stream$.subscribe(obs1);
+  stream$.subscribe(obs2);
+
+  stream$.fire({ type: 'INCREMENT' });
+  stream$.fire({ type: 'INCREMENT' });
+  stream$.fire({ type: 'DECREMENT' });
+  stream$.fire({ type: 'ADD', payload: 10 });
+
+  console.log(`observer: ${obs1.getState()}`);
+  console.log(`observer: ${obs2.getState()}`);
+
   console.log('====================================');
 }
