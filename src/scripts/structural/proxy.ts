@@ -9,7 +9,7 @@
     }
   }
 
-  class Proxy implements Subject {
+  class ProxyClass implements Subject {
     private realSubject: RealSubject;
 
     constructor(realSubject?: RealSubject) {
@@ -22,14 +22,14 @@
     }
 
     private logAccess(): void {
-      console.log('proxy: log');
+      console.log('proxy: logAccess');
     }
   }
 
   const realSubject = new RealSubject();
   realSubject.request();
 
-  const proxy = new Proxy(realSubject);
+  const proxy = new ProxyClass(realSubject);
   proxy.request();
 
   // Пример 1
@@ -71,6 +71,28 @@
 
   const securitySystem = new SecuritySystem();
   securitySystem.open();
+
+  // Пример 2
+  const networkFetch = (url: string) => `proxy: ${url} - server`;
+
+  const cache = new Set();
+
+  const proxiesFetch = new Proxy(networkFetch, {
+    apply(target: Function, thisArg: any, args: never[]) {
+      const url = args[0];
+
+      if (cache.has(url)) {
+        return `proxy: ${url} - cache`;
+      } else {
+        cache.add(url);
+        return Reflect.apply(target, thisArg, args);
+      }
+    },
+  });
+
+  console.log(proxiesFetch('angular.io'));
+  console.log(proxiesFetch('react.io'));
+  console.log(proxiesFetch('angular.io'));
 
   console.log('====================================');
 }
