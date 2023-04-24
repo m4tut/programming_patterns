@@ -163,9 +163,11 @@
     }
   }
 
+  type LightEnum = RedLight | YellowLight | GreenLight;
+
   class TrafficLight {
-    private states: (RedLight | YellowLight | GreenLight)[];
-    private current: any;
+    private states: LightEnum[];
+    private current: LightEnum;
 
     constructor() {
       this.states = [new RedLight(), new YellowLight(), new GreenLight()];
