@@ -127,5 +127,75 @@
   misha.makeOrder('Audi', 'With parktronic!');
   console.log('mediator: ', mediatorOfficialDealer.getCustomersList());
 
+  // Пример 2
+  class User {
+    private name: string;
+    private room: ChatRoom | null;
+
+    constructor(name: string) {
+      this.name = name;
+      this.room = null;
+    }
+
+    getName() {
+      return this.name;
+    }
+
+    setRoom(room: ChatRoom) {
+      this.room = room;
+    }
+
+    send(message: string, to?: User) {
+      if (!this.room) {
+        return;
+      }
+
+      this.room.send(message, this, to);
+    }
+
+    receive(message: string, from: User) {
+      console.log(`mediator: ${from.name} => ${this.name}: ${message}`);
+    }
+  }
+
+  class ChatRoom {
+    private users: { [key: string]: User } = <any>{};
+
+    constructor() {
+      this.users = {};
+    }
+
+    register(user: User) {
+      this.users[user.getName()] = user;
+      user.setRoom(this);
+    }
+
+    send(message: string, from: User, to?: User) {
+      if (to) {
+        to.receive(message, from);
+      } else {
+        Object.keys(this.users).forEach(key => {
+          if (this.users[key] !== from) {
+            this.users[key].receive(message, from);
+          }
+        });
+      }
+    }
+  }
+
+  const vlad = new User('Vlad');
+  const lena = new User('Elena');
+  const igor = new User('Igor');
+
+  const room = new ChatRoom();
+
+  room.register(vlad);
+  room.register(lena);
+  room.register(igor);
+
+  vlad.send('Hello!', lena);
+  lena.send('Hello hello!', vlad);
+  igor.send('Vsem privet');
+
   console.log('====================================');
 }
