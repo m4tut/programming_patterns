@@ -133,18 +133,18 @@
     type: 'INCREMENT' | 'DECREMENT' | 'ADD';
     payload?: number;
   };
-  class Subject {
-    private observers: Observer[];
+  class SubjectClass {
+    private observers: ObserverClass[];
 
     constructor() {
       this.observers = [];
     }
 
-    subscribe(observer: Observer) {
+    subscribe(observer: ObserverClass) {
       this.observers.push(observer);
     }
 
-    unsubscribe(observer: Observer) {
+    unsubscribe(observer: ObserverClass) {
       this.observers = this.observers.filter(obs => obs !== observer);
     }
 
@@ -155,7 +155,7 @@
     }
   }
 
-  class Observer {
+  class ObserverClass {
     private state: number;
     private initialState: number;
 
@@ -185,10 +185,10 @@
     }
   }
 
-  const stream$ = new Subject();
+  const stream$ = new SubjectClass();
 
-  const obs1 = new Observer(0);
-  const obs2 = new Observer(42);
+  const obs1 = new ObserverClass(0);
+  const obs2 = new ObserverClass(42);
 
   stream$.subscribe(obs1);
   stream$.subscribe(obs2);
