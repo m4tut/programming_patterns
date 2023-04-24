@@ -142,5 +142,26 @@
   paypal.pay(2000);
   paypal.show();
 
+  // Пример 2
+  class Sum {
+    private sum: number;
+
+    constructor(initialValue: number) {
+      this.sum = initialValue;
+    }
+
+    add(number: number) {
+      this.sum += number;
+      return this;
+    }
+
+    getSum() {
+      return this.sum;
+    }
+  }
+
+  const sum = new Sum(0);
+  console.log(`chain_of_responsibility: ${sum.add(1).add(2).add(3).getSum()}`);
+
   console.log('====================================');
 }
